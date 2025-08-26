@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Estante Virtual - Finanças</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+
+</head>
+<body>
+  <header class="top-bar">
+    <div class="container">
+      <p>Compre aqui livros novos, usados e seminovos de milhares de sebos e livrarias.</p>
+      <nav>
+        <a href="#">Quero Vender</a>
+        <a href="#">Painel do Livreiro</a>
+        <a href="#">Acessibilidade</a>
+        <a href="#">Central de ajuda</a>
+      </nav>
+    </div>
+  </header>
+
+  <header class="main-header">
+    <div class="container header-content">
+      <div class="logo">
+        <h1>estante <br />virtual</h1>
+      </div>
+
+      <form class="search-form">
+        <select name="searchType" id="searchType">
+          <option value="title">Título ou Autor</option>
+          <!-- Pode adicionar mais opções -->
+        </select>
+        <input type="search" placeholder="finanças" />
+        <button type="submit" aria-label="Buscar">&#128269;</button>
+      </form>
+
+      <div class="user-icons">
+        <button aria-label="Minhas listas" title="Minhas listas">&#9825;</button>
+        <button aria-label="Entrar" title="Entrar">&#128100;</button>
+        <button aria-label="Carrinho" title="Carrinho">&#128722;<sup>0</sup></button>
+      </div>
+    </div>
+
+    <nav class="main-nav container">
+      <a href="#">Informe seu CEP</a>
+      <button class="menu-btn" aria-label="Menu">&#9776;</button>
+      <a href="#" class="active">Categorias</a>
+      <a href="#">Sebos e Livreiros</a>
+      <a href="#">Busque por Autores</a>
+      <a href="#">Dicas de Livros</a>
+      <a href="#">Mais Vendidos</a>
+      <a href="#">Ofertas 1ª Compra</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <nav class="breadcrumb">
+      <a href="#">Home</a> / <span>finanças</span>
+    </nav>
+
+    <div class="content">
+      <aside class="filters">
+        <section>
+          <h3>Tipo de Livro</h3>
+          <label><input type="checkbox" /> novo (3051)</label>
+          <label><input type="checkbox" /> usado (7792)</label>
+        </section>
+
+        <section>
+          <h3>Autor</h3>
+          <input type="search" placeholder="Buscar autor" />
+          <div class="author-list">
+            <label><input type="checkbox" /> ALMEDINA (20)</label>
+            <label><input type="checkbox" /> ANDRADE, PAULA (25)</label>
+            <label><input type="checkbox" /> Abreu Carlos (12)</label>
+            <label><input type="checkbox" /> Adnilson Hipólito (13)</label>
+          </div>
+        </section>
+
+        <section>
+          <h3>Editora</h3>
+          <input type="search" placeholder="Buscar editora" />
+          <!-- Lista de editoras aqui -->
+        </section>
+      </aside>
+
+      <section class="books-section">
+        <h2>FINANÇAS</h2>
+        <p>Exibindo: 1 - 44 de 6.265 resultados</p>
+
+        <div class="sort">
+          <label for="sortSelect">Ordenar por:</label>
+          <select id="sortSelect">
+            <option value="relevance">Relevância</option>
+            <option value="price-asc">Preço: menor para maior</option>
+            <option value="price-desc">Preço: maior para menor</option>
+          </select>
+        </div>
+
+        <div class="books-grid">
+          <article class="book-card">
+            <img src="https://images-na.ssl-images-amazon.com/images/I/71OcqDQw2lL.jpg" alt="Casais inteligentes enriquecem juntos" />
+            <h3>Casais inteligentes</h3>
+          </article>
+
+          <article class="book-card">
+            <img src="https://images-na.ssl-images-amazon.com/images/I/51MM4WkqO4L.jpg" alt="Finanças corporativas" />
+            <h3>Finanças corporativas</h3>
+          </article>
+
+          <article class="book-card">
+            <img src="https://images-na.ssl-images-amazon.com/images/I/51YbA5AvD7L.jpg" alt="Precisa dar certo" />
+            <h3>Precisa dar certo</h3>
+          </article>
+
+          <article class="book-card">
+            <img src="https://images-na.ssl-images-amazon.com/images/I/61tn56xIl8L.jpg" alt="O poder da ação nas finanças" />
+            <h3>O poder da ação nas finanças</h3>
+          </article>
+
+          <!-- Pode adicionar mais livros aqui -->
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 Estante Virtual</p>
+    </div>
+  </footer>
+</body>
+</html>
