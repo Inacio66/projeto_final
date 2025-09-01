@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Estante Virtual - Finanças</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
-
 </head>
 <body>
+  <!-- Topo -->
   <header class="top-bar">
     <div class="container">
       <p>Compre aqui livros novos, usados e seminovos de milhares de sebos e livrarias.</p>
@@ -20,6 +20,7 @@
     </div>
   </header>
 
+  <!-- Cabeçalho principal -->
   <header class="main-header">
     <div class="container header-content">
       <div class="logo">
@@ -29,11 +30,13 @@
       <form class="search-form">
         <select name="searchType" id="searchType">
           <option value="title">Título ou Autor</option>
-          <!-- Pode adicionar mais opções -->
         </select>
         <input type="search" placeholder="finanças" />
         <button type="submit" aria-label="Buscar">&#128269;</button>
       </form>
+
+      <a href="{{ url_for('adicionar') }}" style="color: yellow; font-weight: bold;">+ Adicionar Livro</a>
+
 
       <div class="user-icons">
         <button aria-label="Minhas listas" title="Minhas listas">&#9825;</button>
@@ -54,12 +57,14 @@
     </nav>
   </header>
 
+  <!-- Conteúdo principal -->
   <main class="container">
     <nav class="breadcrumb">
       <a href="#">Home</a> / <span>finanças</span>
     </nav>
 
     <div class="content">
+      <!-- Filtros laterais -->
       <aside class="filters">
         <section>
           <h3>Tipo de Livro</h3>
@@ -81,13 +86,13 @@
         <section>
           <h3>Editora</h3>
           <input type="search" placeholder="Buscar editora" />
-          <!-- Lista de editoras aqui -->
         </section>
       </aside>
 
+      <!-- Listagem de livros -->
       <section class="books-section">
         <h2>FINANÇAS</h2>
-        <p>Exibindo: 1 - 44 de 6.265 resultados</p>
+        <p>Exibindo: {{ livros.page }} de {{ livros.pages }} páginas</p>
 
         <div class="sort">
           <label for="sortSelect">Ordenar por:</label>
@@ -98,33 +103,31 @@
           </select>
         </div>
 
+        <!-- Grid de livros dinâmico -->
         <div class="books-grid">
+          {% for livro in livros.items %}
           <article class="book-card">
-            <img src="https://images-na.ssl-images-amazon.com/images/I/71OcqDQw2lL.jpg" alt="Casais inteligentes enriquecem juntos" />
-            <h3>Casais inteligentes</h3>
+            <img src="{{ livro.imagem }}" alt="{{ livro.titulo }}">
+            <h3>{{ livro.titulo }}</h3>
           </article>
+          {% endfor %}
+        </div>
 
-          <article class="book-card">
-            <img src="https://images-na.ssl-images-amazon.com/images/I/51MM4WkqO4L.jpg" alt="Finanças corporativas" />
-            <h3>Finanças corporativas</h3>
-          </article>
-
-          <article class="book-card">
-            <img src="https://images-na.ssl-images-amazon.com/images/I/51YbA5AvD7L.jpg" alt="Precisa dar certo" />
-            <h3>Precisa dar certo</h3>
-          </article>
-
-          <article class="book-card">
-            <img src="https://images-na.ssl-images-amazon.com/images/I/61tn56xIl8L.jpg" alt="O poder da ação nas finanças" />
-            <h3>O poder da ação nas finanças</h3>
-          </article>
-
-          <!-- Pode adicionar mais livros aqui -->
+        <!-- Paginação -->
+        <div style="margin-top: 20px; text-align: center;">
+          {% if livros.has_prev %}
+            <a href="{{ url_for('home', page=livros.prev_num) }}">← Anterior</a>
+          {% endif %}
+          <span style="margin: 0 10px;">Página {{ livros.page }} de {{ livros.pages }}</span>
+          {% if livros.has_next %}
+            <a href="{{ url_for('home', page=livros.next_num) }}">Próxima →</a>
+          {% endif %}
         </div>
       </section>
     </div>
   </main>
 
+  <!-- Rodapé -->
   <footer class="footer">
     <div class="container">
       <p>© 2025 Estante Virtual</p>
